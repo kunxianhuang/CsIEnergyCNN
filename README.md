@@ -15,6 +15,7 @@ You can download them by push button of download and unzip, then put it into dir
 
 
 ## Usage
+
 ### Training 
 After downloading the training data and saving them into train_data, you can use the below command to train \
 our model the default step is 30,000. It will take about 2 days. \
