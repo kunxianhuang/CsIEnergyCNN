@@ -18,10 +18,10 @@ Testing Data download: https://figshare.com/s/cc8c5a8df5e5ec5b910c \
 You can download them by push button of download and unzip, then put it into directory of test_data/
 
 ## Pre-requires
-python: 3.6.0 or later
-tensorflow:1.5.0 or later
-matplotlib:1.5.3 or later
-numpy:1.12.0 or later
+python: 3.6.0 or later \
+tensorflow:1.5.0 or later \
+matplotlib:1.5.3 or later \
+numpy:1.12.0 or later \
 
 
 ## Usage
