@@ -9,7 +9,8 @@ You can download them by push button of download and unzip, then put it into dir
 Testing Data download: https://figshare.com/s/cc8c5a8df5e5ec5b910c \
 You can download them by push button of download and unzip, then put it into directory of test_data/
 
-##CNN architecture
+## CNN architecture
+
 #![CNN model](https://github.com/kunxianhuang/CsIEnergyCNN/blob/master/plots/CNN_structure.jpg "CsI Array CNN model")
 
 
