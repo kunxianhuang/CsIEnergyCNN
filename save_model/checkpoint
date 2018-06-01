@@ -1,0 +1,6 @@
+model_checkpoint_path: "CsIArray_cnn_final.ckpt"
+all_model_checkpoint_paths: "CsIArray_cnn_epoch28010.ckpt"
+all_model_checkpoint_paths: "CsIArray_cnn_epoch28510.ckpt"
+all_model_checkpoint_paths: "CsIArray_cnn_epoch29010.ckpt"
+all_model_checkpoint_paths: "CsIArray_cnn_epoch29510.ckpt"
+all_model_checkpoint_paths: "CsIArray_cnn_final.ckpt"
