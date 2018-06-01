@@ -21,7 +21,7 @@ You can download them by push button of download and unzip, then put it into dir
 python: 3.6.0 or later \
 tensorflow:1.5.0 or later \
 matplotlib:1.5.3 or later \
-numpy:1.12.0 or later \
+numpy:1.12.0 or later 
 
 
 ## Usage
@@ -31,7 +31,8 @@ After downloading the training data and saving them into train_data, you can use
 our model the default step is 30,000. It will take about 2 days. \
 ``python3 CsIArray_CNN_train.py ``
 
-The trained model will be saved into directory of save_model/
+The trained model will be saved into directory of save_model/ \
+The pre-trained model is already in save_model/. So, you can use it and skip the training step.
 
 ### Applying
 You can download the testing data which are CsI array energies with incident of mono-energy gamma-ray. \
