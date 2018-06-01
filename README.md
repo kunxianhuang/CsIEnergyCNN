@@ -11,7 +11,10 @@ You can download them by push button of download and unzip, then put it into dir
 
 ## CNN architecture
 
-#![CNN model](https://github.com/kunxianhuang/CsIEnergyCNN/blob/master/plots/CNN_structure.jpg "CsI Array CNN model")
+![CNN model](https://github.com/kunxianhuang/CsIEnergyCNN/blob/master/plots/CNN_structure.jpg "CsI Array CNN model") \
+CNN model by using different size of filter: idea from Google inception (GoogleNet). The size of our energy pattern is not fixed, and the size can be larger for gamma-ray with higher energy.  
+
+
 
 
 ## Usage
