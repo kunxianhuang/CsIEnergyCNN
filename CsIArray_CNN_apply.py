@@ -1,6 +1,7 @@
 #!/bin/env python3
 #*-*code=utf-8*-*
 
+import os, sys
 import tensorflow as tf
 import numpy as np
 import argparse
@@ -106,6 +107,10 @@ test_mse_sum = 0.0
 test_abserror_sum = 0.0
 number_count = 0
 
+#try if the save_out directory exist or not. if not, create it.
+if (os.path.isdir(SAVE_PATH)==False):
+    os.makedirs(SAVE_PATH)
+    
 save_fn = SAVE_PATH+args.testout
 f=open(save_fn,'w')
 
