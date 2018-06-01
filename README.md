@@ -32,5 +32,6 @@ The mono-energy samples can be used to compare the corrected energy distribution
 ``python3 CsIArray_CNN_train.py --test_file=[testfilename] --test_outfile=[outputfilename]``
 
 ``testfilename: read in file name of CsI array energy test data, which is in test_data/ ``
+
 ``outputfilename:  write out filename under directory of test_result/ ``
 
