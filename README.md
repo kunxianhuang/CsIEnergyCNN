@@ -23,6 +23,6 @@ You can download the testing data which are CsI array energies with incident of 
 The mono-energy samples can be used to compare the corrected energy distribution with ones that is not applied correction method. The below command line shows how to apply trained model to the test data. \
 ``python3 CsIArray_CNN_train.py --test_file=[testfilename] --test_outfile=[outputfilename]``
 
-``testfilename: read in file name of CsI array energy test data, which is in test_data/ 
-  outputfilename:  write out filename under directory of test_result/ ``
+``testfilename: read in file name of CsI array energy test data, which is in test_data/ ``
+``outputfilename:  write out filename under directory of test_result/ ``
 
