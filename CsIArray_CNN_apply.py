@@ -6,6 +6,7 @@ import tensorflow as tf
 import numpy as np
 import argparse
 from CNNmodel import CNNmodel
+from drawhist import drawhist
 
 DATA_PATH = 'test_data/'
 SAVE_PATH = 'test_result/'
@@ -159,3 +160,6 @@ coord.request_stop()
 coord.join(threads)
 
 sess.close()
+
+#draw histogram here
+drawhist(save_fn)
