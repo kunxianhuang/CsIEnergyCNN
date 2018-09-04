@@ -1,16 +1,14 @@
 #!/bin/env python3
 #*-*code=utf-8*-*
 
-import os, sys
 import tensorflow as tf
 import numpy as np
 import argparse
 from CNNmodel import CNNmodel
-from drawhist import drawhist
 
 DATA_PATH = 'test_data/'
 SAVE_PATH = 'test_result/'
-BATCH_SIZE = 500 #input test sample batch size
+BATCH_SIZE = 500 #input test sample one by one
 N_FEATURES = 900
 
 def batch_generator(filenames, batchSize):
@@ -57,12 +55,15 @@ def batch_generator(filenames, batchSize):
 
 
 parser = argparse.ArgumentParser(prog='CsIArray_CNN_apply.py')
-parser.add_argument('--test_file',type=str,dest="testf",default='CsIArray_test_200_select.csv')
+parser.add_argument('--test_file',type=str,dest="testf",default='CsIArray_test_200.csv')
 parser.add_argument('--test_outfile',type=str,dest="testout",default='CsIArray_testout_200.csv')
 
 args = parser.parse_args()
 
-#session 
+
+
+#with tf.Session() as sess: #= tf.InteractiveSession()
+
 sess= tf.InteractiveSession()
 
 cnnmodel = CNNmodel()
@@ -70,7 +71,7 @@ cnnmodel = CNNmodel()
 x = tf.placeholder(tf.float32, [BATCH_SIZE, N_FEATURES])
 y_ = tf.placeholder(tf.float32, [BATCH_SIZE, 1])
 
-#keep_prob for drop out
+#keep_prob = tf.placeholder(tf.float32)
 keep_prob = tf.placeholder_with_default(1.0, shape=())
 
 #training variable for batch norm
@@ -108,20 +109,16 @@ test_mse_sum = 0.0
 test_abserror_sum = 0.0
 number_count = 0
 
-#try if the save_out directory exist or not. if not, create it.
-if (os.path.isdir(SAVE_PATH)==False):
-    os.makedirs(SAVE_PATH)
-    
 save_fn = SAVE_PATH+args.testout
 f=open(save_fn,'w')
 
 print("Evaluate data size of {}.".format(DATA_SIZE))
 
 
-#print out restore variables
+#result = cnnmodel.result(y_predict)
 from tensorflow.python.tools.inspect_checkpoint import print_tensors_in_checkpoint_file
-#print_tensors_in_checkpoint_file(file_name=save_final_fn, tensor_name='', all_tensors=False, all_tensor_names=True)
-
+print_tensors_in_checkpoint_file(file_name=save_final_fn, tensor_name='', all_tensors=False, all_tensor_names=True)
+#"save_model/train_0522/CsIArray_cnn_final.ckpt" 
 
 f.write(str("Sum,ratio_predict,Ene_predict,ratio_true,TrueEnergy\n"))
 for i in range(DATA_SIZE):
@@ -152,14 +149,15 @@ for i in range(DATA_SIZE):
     
     
     if i%1000 == 0:
-        print("test_sum_of_square %g, test_abserror %g"%(test_mse_sum/(number_count*BATCH_SIZE) , test_abserror_sum/(number_count*BATCH_SIZE)))
+        #print("test sample %d, test_sum_of_square %g, average_sum_of_square %g"%(i, np.sum(test_mse), test_mse_sum/(number_count*BATCH_SIZE)))
+        #print("test sample %d, test_abserror %g, average_abserror %g"%(i, np.sum(test_abserror), test_abserror_sum/(number_count*BATCH_SIZE)))
         
+        print("test_sum_of_square %g, test_abserror %g"%(test_mse_sum/(number_count*BATCH_SIZE) , test_abserror_sum/(number_count*BATCH_SIZE)))
+
 f.close()
 
 coord.request_stop()
 coord.join(threads)
 
-sess.close()
 
-#draw histogram here
-drawhist(save_fn)
+sess.close()

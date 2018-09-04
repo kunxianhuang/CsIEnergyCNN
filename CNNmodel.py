@@ -188,7 +188,7 @@ class CNNmodel(object):
             h_fc2_drop = tf.nn.dropout(h_fc2, keep_prob)
 
             #Fully connected second layer 
-            y_out = tf.nn.sigmoid(tf.matmul(h_fc2_drop, self.W_fc3) + self.b_fc3)
+            y_out = tf.nn.sigmoid(tf.matmul(h_fc2_drop, self.W_fc3) + self.b_fc3, name="output")
 
         return y_out
 
@@ -196,10 +196,10 @@ class CNNmodel(object):
         """
         Loss function: MSE
         """
-        sum_of_square = tf.reduce_mean(tf.reduce_sum(tf.square(y_true - y_predict), reduction_indices=[1]))
-        abs_accuracy =  tf.reduce_mean(tf.reduce_sum(tf.abs(y_true - y_predict), reduction_indices=[1]))
+        sum_of_square = tf.reduce_mean(tf.reduce_sum(tf.square(y_true - y_predict), reduction_indices=[1]), name="mse")
+        abs_error =  tf.reduce_mean(tf.reduce_sum(tf.abs(y_true - y_predict), reduction_indices=[1]), name="abserr")
         mse = sum_of_square
-        error = abs_accuracy
+        error = abs_error
 
         return (mse, error)
 
@@ -217,5 +217,9 @@ class CNNmodel(object):
 
         return train_step_2
 
-
-
+    """
+    def result(self, y_predict):
+        #y_result = tf.reduce_mean(tf.reduce_sum(y_predict, reduction_indices=[1]))
+        y_result = tf.squeeze(y_predict)
+        return y_result
+    """
